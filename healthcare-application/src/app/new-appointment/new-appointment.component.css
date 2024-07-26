@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center text within the container */
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label, input, select {
+    height:25px;
+    margin-bottom: 10px; /* Add some space between form elements */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  }
+  
+  button {
+    width: auto; /* Make button auto-width so it's not as wide as the inputs */
+  }

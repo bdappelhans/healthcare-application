@@ -1,0 +1,33 @@
+<div class="container">
+
+    <h1>Schedule New Appointment for {{ currentUser.firstName }}</h1>
+    <h2>Location</h2>
+
+    <label for="state">State:</label>
+    <select [(ngModel)]="currentState" (ngModelChange)="onStateChange($event)">
+        <option *ngFor="let state of states" [ngValue]="state">{{ state.name }}</option>
+    </select>
+
+    <div *ngIf="currentState?.cities?.length">
+        <label for="city">City:</label>
+        <select [(ngModel)]="currentCity" id="city" name="city" required (ngModelChange)="onCityChange($event)">
+            <option *ngFor="let city of currentState.cities" [ngValue]="city">{{ city.name }}</option>
+        </select>
+    </div>
+
+    <div *ngIf="currentCity.id > 0">
+        <h2>Specialty</h2>
+        <select [(ngModel)]="currentSpecialty" id="specialty" name="specialty" (ngModelChange)="onSpecialtyChange($event)" required>
+            <option *ngFor="let specialty of specialties" [ngValue]="specialty">{{ specialty.name }}</option>
+        </select>
+    </div>
+
+    <div *ngIf="currentSpecialty.id > 0">
+        <h2>Select Provider</h2>
+        <select [(ngModel)]="currentDoctor" id="doctor" name="doctor" (ngModelChange)="onDoctorChange($event)" required>
+            <option *ngFor="let doctor of doctors" [ngValue]="doctor">{{ doctor.firstName }} {{ doctor.lastName }}</option>
+        </select>
+    </div>
+
+    <button *ngIf="currentDoctor.id > 0" (click)="navigateToSchedule()">Schedule</button>
+</div>

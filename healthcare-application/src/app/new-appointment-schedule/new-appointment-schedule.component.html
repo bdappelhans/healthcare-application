@@ -1,0 +1,9 @@
+<div class="container" *ngIf="currentDoctor.id > 0">
+    <h1>Schedule New Appointment for {{ currentUser.firstName }}</h1>
+    <h2>Provider: {{currentDoctor.firstName}} {{currentDoctor.lastName}}</h2>
+    <h2>Specialty: {{ currentDoctor.specialty.name }}</h2>
+    <h2>Location: {{currentDoctor.city.name}}, {{currentDoctor.city.state.name}}</h2>
+
+    <label for="appointmentDate">Choose a date:</label>
+  <input type="date" id="appointmentDate" name="appointmentDate" [(ngModel)]="currentDate" />
+</div>
